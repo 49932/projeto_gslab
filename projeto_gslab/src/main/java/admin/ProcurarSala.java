@@ -55,7 +55,13 @@ public class ProcurarSala extends HttpServlet {
         //dataBaseManager.disconnect();
         
         response.setContentType("text/html; charset=UTF-8");
-        getServletContext().getRequestDispatcher("/ProcurarSala.jsp").forward(request, response);
+        String action = request.getParameter("action");
+
+        if ("delete".equals(action)) {
+            getServletContext().getRequestDispatcher("/ProcurarSalaEliminar.jsp").forward(request, response);
+        } else {
+            getServletContext().getRequestDispatcher("/ProcurarSala.jsp").forward(request, response);
+        }
     }
     
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
